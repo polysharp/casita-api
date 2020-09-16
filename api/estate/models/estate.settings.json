@@ -1,0 +1,71 @@
+{
+  "kind": "collectionType",
+  "collectionName": "estates",
+  "info": {
+    "name": "Estate"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "description": {
+      "type": "richtext",
+      "required": true,
+      "minLength": 10
+    },
+    "price": {
+      "type": "biginteger",
+      "unique": true,
+      "min": "1"
+    },
+    "rate": {
+      "type": "integer",
+      "required": true,
+      "max": 5,
+      "min": 0,
+      "default": 0
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "Appartement",
+        "Maison",
+        "Bureau",
+        "Villa",
+        "Local"
+      ],
+      "default": "Appartement",
+      "required": true
+    },
+    "pictures": {
+      "collection": "picture"
+    },
+    "features": {
+      "collection": "feature"
+    },
+    "banner": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": true
+    },
+    "specifications": {
+      "type": "json",
+      "required": true
+    },
+    "location": {
+      "type": "json",
+      "required": true
+    },
+    "name": {
+      "type": "string",
+      "required": true,
+      "minLength": 1,
+      "maxLength": 255
+    }
+  }
+}
